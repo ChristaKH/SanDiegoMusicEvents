@@ -1,0 +1,76 @@
+{
+  "MusicEvents" : [
+    {
+    "artist" : "Justin Timberlake",
+    "date" : "February 21",
+    "day" : "Thursday",
+    "time" : "8:00 PM",
+    "venue" : "Pachanga Arena",
+    "city": "San Diego",
+    "state" : "CA"
+    },
+    {
+      "artist" : "Blues Traveler",
+      "date" : "February 28",
+      "day" : "Thursday",
+      "time" : "7:00 PM",
+      "venue" : "House of Blues",
+      "city": "San Diego",
+      "state" : "CA"
+    },
+    {
+      "artist" : "Gladys Knight",
+      "date" : "March 9",
+      "day" : "Saturday",
+      "time" : "7:00 PM",
+      "venue" : "Pechanga Resort and Casino",
+      "city": "Temecula",
+      "state" : "CA"
+    },
+    {
+      "artist" : "Ariana Grande",
+      "date" : "April 12",
+      "day" : "Friday",
+      "time" : "3:30 AM",
+      "venue" : "Coachella",
+      "city": "Indio",
+      "state" : "CA"
+    },
+    {
+      "artist" : "Goo Goo Dolls",
+      "date" : "June 14",
+      "day" : "Friday",
+      "time" : "7:00 PM",
+      "venue" : "North Island Ampitheatre",
+      "city": "Chula Vista",
+      "state" : "CA"
+    },
+    {
+      "artist" : "Rebelution",
+      "date" : "June 15",
+      "day" : "Saturday",
+      "time" : "7:00 PM",
+      "venue" : "North Island Ampitheatre",
+      "city": "Chula Vista",
+      "state" : "CA"
+    },
+    {
+      "artist" : "Carlos Santana",
+      "date" : "June 23",
+      "day" : "Sunday",
+      "time" : "7:00 PM",
+      "venue" : "North Island Ampitheatre",
+      "city": "Chula Vista",
+      "state" : "CA"
+    },
+    {
+      "artist" : "Ozzy Osbourne",
+      "date" : "July 23",
+      "day" : "Tuesday",
+      "time" : "7:30 PM",
+      "venue" : "North Island Ampitheatre",
+      "city": "Chula Vista",
+      "state" : "CA"
+    }
+  ]
+}
