@@ -11,35 +11,24 @@ import android.widget.ListView;
 import edu.miracostacollege.cs134.sandiegomusicevents.model.MusicEvent;
 
 public class MainActivity extends ListActivity {
-    private ListView eventListView;
 
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        //Extract info we need
-        String artist = MusicEvent.titles[position];
-        String details = MusicEvent.details[position];
-
-        // Let's make the Intent
-        // Navigate from this class to event details class
-        Intent detailsIntent = new Intent( this, EventDetailsActivity.class);
-
-        //Fill an intent with data
-        detailsIntent.putExtra("Artist", artist);
-        detailsIntent.putExtra("Details", details);
-
-        // Starts the activity
-        startActivity(detailsIntent);
-    }
+    private ListView eventsListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        eventsListView = findViewById(R.id.eventsListView);
+        setListAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, MusicEvent.titles));
         //setContentView(R.layout.activity_main);
+    }
 
-        // Since layout is being inflated by ListView, don't setContentView
-        eventListView = findViewById(R.id.eventsListView);
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        Intent detailsIntent = new Intent(this, EventDetailsActivity.class);
+        detailsIntent.putExtra("Title", MusicEvent.titles[position]);
+        detailsIntent.putExtra("Details", MusicEvent.details[position]);
+        startActivity(detailsIntent);
 
-        ArrayAdapter<String> eventsAdapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, MusicEvent.titles);
-        setListAdapter(eventsAdapter);
     }
 }

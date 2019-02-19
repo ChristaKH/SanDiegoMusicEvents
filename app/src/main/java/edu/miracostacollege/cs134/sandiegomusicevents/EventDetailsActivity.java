@@ -1,10 +1,12 @@
 package edu.miracostacollege.cs134.sandiegomusicevents;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,45 +15,38 @@ import java.io.InputStream;
 
 public class EventDetailsActivity extends AppCompatActivity {
 
-    private ImageView eventImageView;
+
     private TextView eventTitleTextView;
     private TextView eventDetailsTextView;
+    private ImageView eventImageView;
+
+    public static final String TAG = EventDetailsActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details);
 
-        // Retrieve Intent
-        Intent mainIntent = getIntent();
+        Intent intent = getIntent();
+        String title = intent.getStringExtra("Title");
+        String details = intent.getStringExtra("Details");
+        String fileName = title.replaceAll(" ", "") + ".png";
 
-        // Extract info
-        String artist = mainIntent.getStringExtra("Artist");
-        String details = mainIntent.getStringExtra("Details");
-        String imageName =  artist.replaceAll(" ", "") + ".png";
-
-        // Link
-        eventImageView = findViewById(R.id.eventImageView);
         eventTitleTextView = findViewById(R.id.eventTitleTextView);
         eventDetailsTextView = findViewById(R.id.eventDetailsTextView);
+        eventImageView = findViewById(R.id.eventImageView);
 
-        // Fill the view with information
-        eventTitleTextView.setText(artist);
+        eventTitleTextView.setText(title);
         eventDetailsTextView.setText(details);
 
-        // Use asset manager to load correct image
         AssetManager am = getAssets();
-
-        // Find input stream to selected image
         try {
-            InputStream stream = am.open(imageName);
-
-            // Create drawable object
-            Drawable eventImage = Drawable.createFromStream(stream, artist);
+            InputStream stream = am.open(fileName);
+            Drawable eventImage = Drawable.createFromStream(stream, title);
             eventImageView.setImageDrawable(eventImage);
-
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage());
         }
+
     }
 }
