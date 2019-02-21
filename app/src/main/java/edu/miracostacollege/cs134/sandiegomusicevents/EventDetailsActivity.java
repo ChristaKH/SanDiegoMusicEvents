@@ -28,21 +28,35 @@ public class EventDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event_details);
 
         Intent intent = getIntent();
-        String title = intent.getStringExtra("Title");
-        String details = intent.getStringExtra("Details");
-        String fileName = title.replaceAll(" ", "") + ".png";
+        String artist = intent.getStringExtra("Artist");
+        String date = intent.getStringExtra("Date");
+        String day = intent.getStringExtra("Day");
+        String time = intent.getStringExtra("Time");
+        String venue = intent.getStringExtra("Venue");
+        String city = intent.getStringExtra("City");
+        String state = intent.getStringExtra("State");
+        String imageName = intent.getStringExtra("ImageName");
+
+        String details = "";
+        details += date;
+        details += "\n" + day;
+        details += "\n"  + time;
+        details += "\n" + venue;
+        details += "\n" + city;
+        details += "\n" + state;
+        details += "\n" + imageName;
 
         eventTitleTextView = findViewById(R.id.eventTitleTextView);
         eventDetailsTextView = findViewById(R.id.eventDetailsTextView);
         eventImageView = findViewById(R.id.eventImageView);
 
-        eventTitleTextView.setText(title);
+        eventTitleTextView.setText(artist);
         eventDetailsTextView.setText(details);
 
         AssetManager am = getAssets();
         try {
-            InputStream stream = am.open(fileName);
-            Drawable eventImage = Drawable.createFromStream(stream, title);
+            InputStream stream = am.open(imageName);
+            Drawable eventImage = Drawable.createFromStream(stream, artist);
             eventImageView.setImageDrawable(eventImage);
         } catch (IOException e) {
             Log.e(TAG, e.getMessage());
