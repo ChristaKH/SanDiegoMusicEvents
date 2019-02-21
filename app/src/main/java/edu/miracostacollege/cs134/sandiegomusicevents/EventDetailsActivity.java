@@ -17,8 +17,13 @@ public class EventDetailsActivity extends AppCompatActivity {
 
 
     private TextView eventTitleTextView;
-    private TextView eventDetailsTextView;
+    private TextView eventDayTextView;
+    private TextView eventVenueTextView;
+    private TextView eventTimeTextView;
+    private TextView eventCityTextView;
+
     private ImageView eventImageView;
+    private TextView eventStateTextView;
 
     public static final String TAG = EventDetailsActivity.class.getName();
 
@@ -37,21 +42,23 @@ public class EventDetailsActivity extends AppCompatActivity {
         String state = intent.getStringExtra("State");
         String imageName = intent.getStringExtra("ImageName");
 
-        String details = "";
-        details += date;
-        details += "\n" + day;
-        details += "\n"  + time;
-        details += "\n" + venue;
-        details += "\n" + city;
-        details += "\n" + state;
-        details += "\n" + imageName;
+        String dateDetails = date + " - " + day;
+
 
         eventTitleTextView = findViewById(R.id.eventTitleTextView);
-        eventDetailsTextView = findViewById(R.id.eventDetailsTextView);
+        eventStateTextView = findViewById(R.id.eventStateTextView);
+        eventCityTextView  = findViewById(R.id.eventCityTextView);
+        eventDayTextView = findViewById(R.id.eventDayTextView);
+        eventVenueTextView = findViewById(R.id.eventVenueTextView);
         eventImageView = findViewById(R.id.eventImageView);
+        eventTimeTextView = findViewById(R.id.eventTimeTextView);
 
         eventTitleTextView.setText(artist);
-        eventDetailsTextView.setText(details);
+        eventDayTextView.setText(dateDetails);
+        eventStateTextView.setText(state);
+        eventCityTextView.setText(city);
+        eventVenueTextView.setText(venue);
+        eventTimeTextView.setText(time);
 
         AssetManager am = getAssets();
         try {
